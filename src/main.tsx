@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import ReactDOM from "react-dom/client"
 import App from "./App.tsx"
 import Books from "./pages/Books.tsx"
+import NewBook from "./pages/NewBook.tsx"
 import { InitWasm } from "./p2panda/InitWasm.tsx"
 
 // const keyPair = new KeyPair()
@@ -14,10 +15,8 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-      {
-        path: "/",
-        element: <Books />,
-      },
+      { path: "/books", element: <Books /> },
+      { path: "/books/new", element: <NewBook /> }
     ],
   },
 ])
