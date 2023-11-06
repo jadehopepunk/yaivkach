@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react"
-import Books from "./pages/Books.tsx"
 import Navbar from "./components/Navbar.tsx"
 import { usePanda } from "./p2panda/hooks/usePanda"
+import { Outlet } from "react-router-dom";
 
 function App() {
   const { publicKey } = usePanda()
@@ -9,7 +9,7 @@ function App() {
   return (
     <Box>
       <Navbar />
-      <Books />
+      <Outlet />
     </Box>
   )
 }
