@@ -1,16 +1,30 @@
-import { Box } from "@chakra-ui/react"
-import Navbar from "./components/Navbar.tsx"
 import { usePanda } from "./p2panda/hooks/usePanda"
-import { Outlet } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import Layout from "./pages/Layout.tsx"
+import Books from "./pages/Books.tsx"
+import NewBook from "./pages/NewBook.tsx"
+import { ChakraProvider } from "@chakra-ui/react"
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      { path: "/books", element: <Books /> },
+      { path: "/books/new", element: <NewBook /> },
+    ],
+  },
+])
+
+// const keyPair = new KeyPair()
+// console.log(keyPair.publicKey())
 function App() {
   const { publicKey } = usePanda()
 
   return (
-    <Box>
-      <Navbar />
-      <Outlet />
-    </Box>
+    <ChakraProvider>
+      <RouterProvider router={router} />
+    </ChakraProvider>
   )
 }
 
