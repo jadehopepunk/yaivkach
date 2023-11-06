@@ -21,6 +21,7 @@
     "graphql-request": "^6.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.48.2",
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.18.0",
     "shirokuma": "^0.1.1"
