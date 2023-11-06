@@ -1,7 +1,7 @@
 "use client"
 
 import { Box, Flex, useColorModeValue, Stack } from "@chakra-ui/react"
-import ColourModeSwitcher from "./ColorModeSwitcher.tsx"
+import ColourModeSwitcher from "../ColorModeSwitcher.tsx"
 
 export default function Navbar() {
   return (

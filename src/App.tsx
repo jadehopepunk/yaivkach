@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react"
-import Cars from "./Cars.tsx"
-import Navbar from "./Navbar.tsx"
+import Books from "./pages/Books.tsx"
+import Navbar from "./components/Navbar.tsx"
 import { usePanda } from "./p2panda/hooks/usePanda"
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   return (
     <Box>
       <Navbar />
-      <Cars />
+      <Books />
     </Box>
   )
 }
