@@ -16,12 +16,12 @@ import {
   Select,
   Textarea,
   IconButton,
-  Flex,
   InputGroup,
   InputRightAddon,
 } from "@chakra-ui/react"
 import { AddIcon } from "@chakra-ui/icons"
 import capitalize from "capitalize"
+import langs from "langs"
 
 interface CreatorFormValue {
   name: string
@@ -96,20 +96,6 @@ export default function NewBook() {
                           </Select>
                         </InputRightAddon>
                       </InputGroup>
-                      // <Flex direction="row" key={field.id} width="100%">
-                      //   <Flex flexGrow={1}>
-                      //     <Input {...register(`creators.${index}.name`)} />
-                      //   </Flex>
-                      //   <Flex flexGrow={0}>
-                      //     <Select {...register(`creators.${index}.role`)}>
-                      //       {creatorRoles.map((roleName) => (
-                      //         <option value={roleName}>
-                      //           {capitalize(roleName)}
-                      //         </option>
-                      //       ))}
-                      //     </Select>
-                      //   </Flex>
-                      // </Flex>
                     ))}
                     <IconButton
                       icon={<AddIcon />}
@@ -130,9 +116,9 @@ export default function NewBook() {
               <FormControl>
                 <FormLabel>Language</FormLabel>
                 <Select placeholder="Select option">
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
+                  {langs.all().map((lang) => (
+                    <option value={lang[1]}>{lang.name}</option>
+                  ))}
                 </Select>
               </FormControl>
               <Box>
