@@ -23,14 +23,20 @@ import { AddIcon } from "@chakra-ui/icons"
 import capitalize from "capitalize"
 import langs from "langs"
 
-interface CreatorFormValue {
+export interface CreatorFormValue {
   name: string
   role: string
 }
 
-type NewBookFormValues = FieldValues & {
+export interface BookFormValues {
+  title: string
+  blurb: string
+  isbn: string
+  language: string
   creators: Array<CreatorFormValue>
 }
+
+type BookFormFieldValues = FieldValues & BookFormValues
 
 const creatorRoles = [
   "author",
@@ -41,8 +47,12 @@ const creatorRoles = [
   "other",
 ]
 
-export default function NewBook() {
-  const methods = useForm<NewBookFormValues>({
+export interface BookFormProps {
+  onSubmit: (values: BookFormValues) => void
+}
+
+export default function BookForm({ onSubmit }: BookFormProps) {
+  const methods = useForm<BookFormFieldValues>({
     defaultValues: {
       creators: [{ name: "", role: "author" }],
     },
@@ -54,11 +64,7 @@ export default function NewBook() {
     register,
   } = methods
 
-  function onSubmit(values: any) {
-    console.log("form submitted", values)
-  }
-
-  const { fields, append } = useFieldArray<NewBookFormValues>({
+  const { fields, append } = useFieldArray<BookFormFieldValues>({
     control,
     name: "creators",
   })
@@ -74,7 +80,7 @@ export default function NewBook() {
             <VStack spacing={4} align="stretch">
               <FormControl>
                 <FormLabel>Title</FormLabel>
-                <Input />
+                <Input {...register("title")} />
               </FormControl>
               <FormControl>
                 <FormLabel>Creator(s)</FormLabel>
@@ -107,15 +113,18 @@ export default function NewBook() {
               </FormControl>
               <FormControl>
                 <FormLabel>Blurb</FormLabel>
-                <Textarea placeholder="Promotional/descriptive text, perhaps from the back cover." />
+                <Textarea
+                  {...register("blurb")}
+                  placeholder="Promotional/descriptive text, perhaps from the back cover."
+                />
               </FormControl>
               <FormControl>
                 <FormLabel>ISBN</FormLabel>
-                <Input />
+                <Input {...register("isbn")} />
               </FormControl>
               <FormControl>
                 <FormLabel>Language</FormLabel>
-                <Select placeholder="Select option">
+                <Select {...register("language")} placeholder="Select option">
                   {langs.all().map((lang) => (
                     <option key={lang[1]} value={lang[1]}>
                       {lang.name}
