@@ -1,10 +1,10 @@
-import { usePanda } from "./p2panda/hooks/usePanda"
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import Layout from "./pages/Layout.tsx"
 import Books from "./pages/Books.tsx"
 import NewBook from "./pages/NewBook.tsx"
-import { ChakraProvider } from "@chakra-ui/react"
 import NewBookItem from "./pages/NewBookItem.tsx"
+import { usePanda } from "./p2panda/hooks/usePanda"
+import RedBugApp from "./redbug/RedBugApp.tsx"
 
 const router = createBrowserRouter([
   {
@@ -25,9 +25,9 @@ function App() {
   console.log("panda public key", publicKey)
 
   return (
-    <ChakraProvider>
+    <RedBugApp>
       <RouterProvider router={router} />
-    </ChakraProvider>
+    </RedBugApp>
   )
 }
 
