@@ -1,27 +1,19 @@
-[resource]
-description = "A bookable resource"
+[book]
+description = "A unique published work"
 
-[resource.fields]
+[book.fields]
 name = { type = "str" }
-type_name = { type = "str" }
-type_schema = { type = "str" }
+address = { type = "str" }
+opening_year = { type = "int" }
 
-[car_resource]
-description = "Car specific data for a resource"
+[book_edition]
+description = "An edition of a published work"
 
-[car_resource.fields]
-resource = { type = "relation", schema = { name = "resource" } }
-registration_number = { type = "str"}
+[book_edition.fields]
+format = { type = "str" }
+isbn = { type = "str" }
 
-[booking]
-description = "An instance of booking a resource"
+[book_item]
+description = "A specific instance of a physical book"
 
-[booking.fields]
-resource = { type = "relation", schema = { name = "resource" } }
-booker = { type = "relation", schema = { name = "resource" } }
-
-[booker]
-description = "An entity which can book a resource"
-
-[booker.fields]
-name = { type = "str" }
+[book_item.fields]

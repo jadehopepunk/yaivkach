@@ -1,24 +1,26 @@
-import { useForm } from "react-hook-form"
+import { FormProvider, useForm } from "react-hook-form"
 import {
   FormLabel,
   FormControl,
   Input,
   Button,
   Container,
-  InputGroup,
-  InputLeftElement,
   Heading,
   Box,
+  VStack,
 } from "@chakra-ui/react"
-import { SearchIcon } from "@chakra-ui/icons"
-import { TextFieldError } from "../components/Forms"
+import MultiTextInput from "../components/forms/MultiTextInput"
 
 export default function NewBook() {
+  const methods = useForm({
+    defaultValues: {
+      foobar: ["adrf"],
+    },
+  })
   const {
     handleSubmit,
-    register,
     formState: { errors, isSubmitting },
-  } = useForm()
+  } = methods
 
   function onSubmit(values: any) {
     console.log("form submitted", values)
@@ -27,36 +29,32 @@ export default function NewBook() {
   return (
     <Container py={4}>
       <Heading as="h2" size="lg" color="gray.600">
-        Add book
+        New book
       </Heading>
       <Box py={4}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <FormControl isInvalid={!!errors.search}>
-            <FormLabel htmlFor="search">Search</FormLabel>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <SearchIcon color="gray.300" />
-              </InputLeftElement>
-              <Input
-                placeholder="isbn, title or author"
-                {...register("search", {
-                  required: "This is required",
-                  minLength: {
-                    value: 4,
-                    message: "Minimum length should be 4",
-                  },
-                })}
-              />
-            </InputGroup>
-            <TextFieldError error={errors.search} />
-          </FormControl>
-          <Box mt={4}>
-            <Button colorScheme="teal" isLoading={isSubmitting} type="submit">
-              Search
-            </Button>{" "}
-            or <Button>Create new book</Button>
-          </Box>
-        </form>
+        <FormProvider {...methods}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <VStack spacing={4} align="stretch">
+              <FormControl>
+                <FormLabel>Title</FormLabel>
+                <Input />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Creator(s)</FormLabel>
+                <MultiTextInput addLabel="Add creator" />
+              </FormControl>
+              <Box>
+                <Button
+                  colorScheme="teal"
+                  isLoading={isSubmitting}
+                  type="submit"
+                >
+                  Create
+                </Button>{" "}
+              </Box>
+            </VStack>
+          </form>
+        </FormProvider>
       </Box>
     </Container>
   )

@@ -4,6 +4,7 @@ import Layout from "./pages/Layout.tsx"
 import Books from "./pages/Books.tsx"
 import NewBook from "./pages/NewBook.tsx"
 import { ChakraProvider } from "@chakra-ui/react"
+import NewBookItem from "./pages/NewBookItem.tsx"
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,8 @@ const router = createBrowserRouter([
     children: [
       { path: "/books", element: <Books /> },
       { path: "/books/new", element: <NewBook /> },
+
+      { path: "/book-items/new", element: <NewBookItem /> },
     ],
   },
 ])
