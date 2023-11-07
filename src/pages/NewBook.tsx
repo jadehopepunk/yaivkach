@@ -1,4 +1,9 @@
-import { FormProvider, useForm } from "react-hook-form"
+import {
+  FormProvider,
+  useFieldArray,
+  useForm,
+  FieldValues,
+} from "react-hook-form"
 import {
   FormLabel,
   FormControl,
@@ -10,23 +15,51 @@ import {
   VStack,
   Select,
   Textarea,
+  IconButton,
+  Flex,
 } from "@chakra-ui/react"
-import MultiTextInput from "../components/forms/MultiTextInput"
+import { AddIcon } from "@chakra-ui/icons"
+import capitalize from "capitalize"
+
+interface CreatorFormValue {
+  name: string
+  role: string
+}
+
+type NewBookFormValues = FieldValues & {
+  creators: Array<CreatorFormValue>
+}
+
+const creatorRoles = [
+  "author",
+  "contributor",
+  "editor",
+  "translator",
+  "illustrator",
+  "other",
+]
 
 export default function NewBook() {
-  const methods = useForm({
+  const methods = useForm<NewBookFormValues>({
     defaultValues: {
-      foobar: ["adrf"],
+      creators: [{ name: "", role: "author" }],
     },
   })
   const {
     handleSubmit,
     formState: { errors, isSubmitting },
+    control,
+    register,
   } = methods
 
   function onSubmit(values: any) {
     console.log("form submitted", values)
   }
+
+  const { fields, append } = useFieldArray<NewBookFormValues>({
+    control,
+    name: "creators",
+  })
 
   return (
     <Container py={4}>
@@ -43,21 +76,39 @@ export default function NewBook() {
               </FormControl>
               <FormControl>
                 <FormLabel>Creator(s)</FormLabel>
-                <MultiTextInput addLabel="Add creator" />
+                <Box>
+                  <VStack align="flex-start">
+                    {fields.map((field, index) => (
+                      <Flex direction="row" key={field.id} width="100%">
+                        <Flex flexGrow={1}>
+                          <Input {...register(`creators.${index}.name`)} />
+                        </Flex>
+                        <Flex flexGrow={0}>
+                          <Select {...register(`creators.${index}.role`)}>
+                            {creatorRoles.map((roleName) => (
+                              <option value={roleName}>
+                                {capitalize(roleName)}
+                              </option>
+                            ))}
+                          </Select>
+                        </Flex>
+                      </Flex>
+                    ))}
+                    <IconButton
+                      icon={<AddIcon />}
+                      onClick={append}
+                      aria-label="Add creator"
+                    />
+                  </VStack>
+                </Box>
               </FormControl>
               <FormControl>
                 <FormLabel>Blurb</FormLabel>
-                <Textarea />
+                <Textarea placeholder="Promotional/descriptive text, perhaps from the back cover." />
               </FormControl>
               <FormControl>
                 <FormLabel>ISBN</FormLabel>
                 <Input />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Format</FormLabel>
-                <Select placeholder="Select option">
-                  <option value="option1">Paper book</option>
-                </Select>
               </FormControl>
               <FormControl>
                 <FormLabel>Language</FormLabel>

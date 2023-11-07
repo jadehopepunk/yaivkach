@@ -1,17 +1,18 @@
 [book]
-description = "A unique published work"
+description = "A unique edition of a published work"
 
 [book.fields]
-name = { type = "str" }
-address = { type = "str" }
-opening_year = { type = "int" }
-
-[book_edition]
-description = "An edition of a published work"
-
-[book_edition.fields]
-format = { type = "str" }
+title = { type = "str" }
+blurb = { type = "str" }
 isbn = { type = "str" }
+language = { type = "str" }
+
+[book_creatorship]
+description = "An instance of someone contributing to a book's creation"
+
+[book_creatorship.fields]
+name = { type = "str" }
+role = { type = "str" }
 
 [book_item]
 description = "A specific instance of a physical book"

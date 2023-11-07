@@ -16,6 +16,7 @@
     "@chakra-ui/react": "^2.8.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "capitalize": "^2.0.4",
     "framer-motion": "^10.15.2",
     "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",
