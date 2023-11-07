@@ -17,6 +17,8 @@ import {
   Textarea,
   IconButton,
   Flex,
+  InputGroup,
+  InputRightAddon,
 } from "@chakra-ui/react"
 import { AddIcon } from "@chakra-ui/icons"
 import capitalize from "capitalize"
@@ -79,20 +81,35 @@ export default function NewBook() {
                 <Box>
                   <VStack align="flex-start">
                     {fields.map((field, index) => (
-                      <Flex direction="row" key={field.id} width="100%">
-                        <Flex flexGrow={1}>
-                          <Input {...register(`creators.${index}.name`)} />
-                        </Flex>
-                        <Flex flexGrow={0}>
-                          <Select {...register(`creators.${index}.role`)}>
+                      <InputGroup>
+                        <Input {...register(`creators.${index}.name`)} />
+                        <InputRightAddon>
+                          <Select
+                            variant="unstyled"
+                            {...register(`creators.${index}.role`)}
+                          >
                             {creatorRoles.map((roleName) => (
                               <option value={roleName}>
                                 {capitalize(roleName)}
                               </option>
                             ))}
                           </Select>
-                        </Flex>
-                      </Flex>
+                        </InputRightAddon>
+                      </InputGroup>
+                      // <Flex direction="row" key={field.id} width="100%">
+                      //   <Flex flexGrow={1}>
+                      //     <Input {...register(`creators.${index}.name`)} />
+                      //   </Flex>
+                      //   <Flex flexGrow={0}>
+                      //     <Select {...register(`creators.${index}.role`)}>
+                      //       {creatorRoles.map((roleName) => (
+                      //         <option value={roleName}>
+                      //           {capitalize(roleName)}
+                      //         </option>
+                      //       ))}
+                      //     </Select>
+                      //   </Flex>
+                      // </Flex>
                     ))}
                     <IconButton
                       icon={<AddIcon />}
