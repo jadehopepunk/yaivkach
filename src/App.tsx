@@ -19,10 +19,10 @@ const router = createBrowserRouter([
   },
 ])
 
-// const keyPair = new KeyPair()
-// console.log(keyPair.publicKey())
 function App() {
   const { publicKey } = usePanda()
+
+  console.log("panda public key", publicKey)
 
   return (
     <ChakraProvider>

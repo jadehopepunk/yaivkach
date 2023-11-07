@@ -81,7 +81,7 @@ export default function NewBook() {
                 <Box>
                   <VStack align="flex-start">
                     {fields.map((field, index) => (
-                      <InputGroup>
+                      <InputGroup key={field.id}>
                         <Input {...register(`creators.${index}.name`)} />
                         <InputRightAddon>
                           <Select
@@ -89,7 +89,7 @@ export default function NewBook() {
                             {...register(`creators.${index}.role`)}
                           >
                             {creatorRoles.map((roleName) => (
-                              <option value={roleName}>
+                              <option key={roleName} value={roleName}>
                                 {capitalize(roleName)}
                               </option>
                             ))}
@@ -117,7 +117,9 @@ export default function NewBook() {
                 <FormLabel>Language</FormLabel>
                 <Select placeholder="Select option">
                   {langs.all().map((lang) => (
-                    <option value={lang[1]}>{lang.name}</option>
+                    <option key={lang[1]} value={lang[1]}>
+                      {lang.name}
+                    </option>
                   ))}
                 </Select>
               </FormControl>

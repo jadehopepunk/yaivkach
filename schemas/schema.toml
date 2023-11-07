@@ -7,14 +7,9 @@ blurb = { type = "str" }
 isbn = { type = "str" }
 language = { type = "str" }
 
-[book_creatorship]
+[book_creator]
 description = "An instance of someone contributing to a book's creation"
 
-[book_creatorship.fields]
+[book_creator.fields]
 name = { type = "str" }
 role = { type = "str" }
-
-[book_item]
-description = "A specific instance of a physical book"
-
-[book_item.fields]
