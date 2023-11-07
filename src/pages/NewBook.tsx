@@ -8,6 +8,8 @@ import {
   Heading,
   Box,
   VStack,
+  Select,
+  Textarea,
 } from "@chakra-ui/react"
 import MultiTextInput from "../components/forms/MultiTextInput"
 
@@ -42,6 +44,28 @@ export default function NewBook() {
               <FormControl>
                 <FormLabel>Creator(s)</FormLabel>
                 <MultiTextInput addLabel="Add creator" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Blurb</FormLabel>
+                <Textarea />
+              </FormControl>
+              <FormControl>
+                <FormLabel>ISBN</FormLabel>
+                <Input />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Format</FormLabel>
+                <Select placeholder="Select option">
+                  <option value="option1">Paper book</option>
+                </Select>
+              </FormControl>
+              <FormControl>
+                <FormLabel>Language</FormLabel>
+                <Select placeholder="Select option">
+                  <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                  <option value="option3">Option 3</option>
+                </Select>
               </FormControl>
               <Box>
                 <Button
