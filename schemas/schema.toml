@@ -7,7 +7,7 @@ subtitle = { type = "str" }
 blurb = { type = "str" }
 isbn = { type = "str" }
 language = { type = "str" }
-creators = { type = "relation_list", schema = { name = "book_creator" } }
+# creators = { type = "relation_list", schema = { name = "book_creator" } }
 
 [book_creator]
 description = "An instance of someone contributing to a book's creation"

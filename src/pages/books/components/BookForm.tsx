@@ -35,7 +35,7 @@ export interface BookFormValues {
   blurb: string
   isbn: string
   language: string
-  creators: Array<CreatorFormValue>
+  creators?: Array<CreatorFormValue>
 }
 
 type BookFormFieldValues = FieldValues & BookFormValues

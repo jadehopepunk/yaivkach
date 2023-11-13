@@ -1,9 +1,9 @@
 // Identifiers of the schemas we use
 
 export const SCHEMA_IDS = {
-  book: "book_0020d7f55a852b3044f888acb4387b595425d58356415a69724867e0a83ce89419f1",
+  book: "book_00201a70519f4d8a940e0f617ee00de5058f76ebc5cf9307b3925df19dc491c830c5",
   book_creator:
-    "book_creator_002069ebf6161b57797753e78b9d917511f9ba81b26a664703e41a6565d43345e474",
+    "book_creator_0020e25ea745b4d45d70f2724c2b97e6d15af7318ba7cfa46dd73dd62fcd5b2f2809",
   library:
-    "library_002001655144fd8aece90b41ab234d5d2789cdb2492e3435b9fa675f90393c6b3127",
+    "library_00207943770e9c960301ae7dda7bec77e4c8027879005b6156aeebad92300de523f1",
 }
