@@ -10,3 +10,10 @@ export type Book = {
   isbn: string
   language: string
 }
+
+export type Library = {
+  name: string
+  slug: string
+  short_description: string
+  long_description: string
+}

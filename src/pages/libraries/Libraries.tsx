@@ -1,6 +1,7 @@
 import { gql, useQuery } from "@apollo/client"
-import { Container, Stack, Heading } from "@chakra-ui/react"
+import { Container, Stack, Heading, Box } from "@chakra-ui/react"
 import { SCHEMA_IDS } from "../../data/schemas"
+import LibraryList from "./components/LibraryList"
 
 const LIBRARY_INDEX_QUERY = gql`
   query librariesIndex {
@@ -30,6 +31,9 @@ export default function Libraries() {
     <Container padding={4}>
       <Stack spacing={4}>
         <Heading>Libraries</Heading>
+        <Box>
+          <LibraryList documents={data.allLibraries.documents} />
+        </Box>
       </Stack>
     </Container>
   )
