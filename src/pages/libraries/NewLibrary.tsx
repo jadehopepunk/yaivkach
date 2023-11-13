@@ -13,8 +13,12 @@ export default function NewLibrary() {
   const handleSubmit = async (values: Library) => {
     console.log("form submitted", values)
 
+    // TODO: Find a way to pass these values without having to de-structure and re-structure
+    const { name, short_description, long_description } = values
+    const library = { name, short_description, long_description }
+
     if (session) {
-      const viewId = await createLibrary(session, values)
+      const viewId = await createLibrary(session, library)
       console.log("viewId", viewId)
       await client.refetchQueries({ include: ["libraryIndex"] })
       navigate("/libraries")

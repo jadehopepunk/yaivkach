@@ -5,5 +5,5 @@ export const SCHEMA_IDS = {
   book_creator:
     "book_creator_002069ebf6161b57797753e78b9d917511f9ba81b26a664703e41a6565d43345e474",
   library:
-    "library_0020a21b13fc2c8818fa60dea31b78d1253e1779b9d16d4812d93ba4fe8d9fa3dd9f",
+    "library_002001655144fd8aece90b41ab234d5d2789cdb2492e3435b9fa675f90393c6b3127",
 }

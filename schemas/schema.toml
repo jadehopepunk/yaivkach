@@ -21,6 +21,5 @@ description = "A collection of books"
 
 [library.fields]
 name = { type = "str" }
-slug = { type = "str"}
 short_description = { type = "str"}
 long_description = { type = "str"}

@@ -1,9 +1,4 @@
-import {
-  FormProvider,
-  useFieldArray,
-  useForm,
-  FieldValues,
-} from "react-hook-form"
+import { FormProvider, useForm, FieldValues } from "react-hook-form"
 import {
   Container,
   Heading,
@@ -31,11 +26,6 @@ export default function LibraryForm({ onSubmit }: LibraryFormProps) {
     control,
     register,
   } = methods
-
-  const { fields, append } = useFieldArray<LibraryFormFieldValues>({
-    control,
-    name: "creators",
-  })
 
   return (
     <Container py={4}>

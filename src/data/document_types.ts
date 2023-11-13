@@ -13,7 +13,6 @@ export type Book = {
 
 export type Library = {
   name: string
-  slug: string
   short_description: string
   long_description: string
 }

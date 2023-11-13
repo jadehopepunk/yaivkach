@@ -5,7 +5,7 @@ import { SCHEMA_IDS } from "../../data/schemas"
 import LibraryList from "./components/LibraryList"
 
 const LIBRARY_INDEX_QUERY = gql`
-  query librariesIndex {
+  query libraryIndex {
     allLibraries: all_${SCHEMA_IDS.library} {
       documents {
         meta {
