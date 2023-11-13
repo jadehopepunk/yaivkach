@@ -18,6 +18,7 @@ import {
   IconButton,
   InputGroup,
   InputRightAddon,
+  Stack,
 } from "@chakra-ui/react"
 import { AddIcon } from "@chakra-ui/icons"
 import capitalize from "capitalize"
@@ -78,7 +79,7 @@ export default function BookForm({ onSubmit }: BookFormProps) {
       <Box py={4}>
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <VStack spacing={4} align="stretch">
+            <Stack spacing={4} align="stretch">
               <FormControl>
                 <FormLabel>Title</FormLabel>
                 <Input {...register("title")} />
@@ -144,9 +145,9 @@ export default function BookForm({ onSubmit }: BookFormProps) {
                   type="submit"
                 >
                   Create
-                </Button>{" "}
+                </Button>
               </Box>
-            </VStack>
+            </Stack>
           </form>
         </FormProvider>
       </Box>

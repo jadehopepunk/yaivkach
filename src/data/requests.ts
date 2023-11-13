@@ -1,6 +1,6 @@
 import { DocumentViewId, Session } from "shirokuma"
 import { SCHEMA_IDS } from "./schemas"
-import { Book, BookCreator } from "./document_types"
+import { Book, BookCreator, Library } from "./document_types"
 
 type SingularDocumentViewId = string
 
@@ -41,5 +41,14 @@ export async function createBook(
 
   return expectSingleId(
     await session.create(book, { schemaId: SCHEMA_IDS.book })
+  )
+}
+
+export async function createLibrary(
+  session: Session,
+  library: Library
+): Promise<SingularDocumentViewId> {
+  return expectSingleId(
+    await session.create(library, { schemaId: SCHEMA_IDS.library })
   )
 }

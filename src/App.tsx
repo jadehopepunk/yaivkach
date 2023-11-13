@@ -5,6 +5,7 @@ import NewBook from "./pages/books/NewBook.tsx"
 import NewBookItem from "./pages/NewBookItem.tsx"
 import RedBugApp from "./redbug/RedBugApp.tsx"
 import Libraries from "./pages/libraries/Libraries.tsx"
+import NewLibrary from "./pages/libraries/NewLibrary.tsx"
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/libraries", element: <Libraries /> },
+      { path: "/libraries/new", element: <NewLibrary /> },
 
       { path: "/books", element: <Books /> },
       { path: "/books/new", element: <NewBook /> },

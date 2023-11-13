@@ -1,15 +1,5 @@
 import { gql, useQuery } from "@apollo/client"
-import {
-  Container,
-  Heading,
-  Button,
-  VStack,
-  Box,
-  SimpleGrid,
-  CardBody,
-  Card,
-  Stack,
-} from "@chakra-ui/react"
+import { Container, Heading, Button, Box, Stack } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 import { SCHEMA_IDS } from "../../data/schemas"
 import BookList from "./components/BookList"
