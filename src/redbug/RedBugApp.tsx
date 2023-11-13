@@ -1,6 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react"
 import { ReactNode } from "react"
-import { PandaProvider } from "../p2panda/contexts"
+import { PandaProvider } from "../p2panda-apollo"
 import ConnectedRedbugApp from "./ConnectedRedbugApp"
 
 interface RedBugAppProps {
