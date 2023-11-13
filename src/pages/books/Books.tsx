@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 import { BOOK_SCHEMA_ID } from "../../data/schemas"
+import BookList from "./components/BookList"
 
 const GET_BOOKS = gql`
   {
@@ -46,13 +47,7 @@ export default function Books() {
           <Button colorScheme="blue">Add Book</Button>
         </Link>
         <Box>
-          <SimpleGrid columns={2} spacing={10}>
-            {data.allBooks.documents.map((document) => (
-              <Card key={document.meta.viewId}>
-                <CardBody>{document.fields.title}</CardBody>
-              </Card>
-            ))}
-          </SimpleGrid>
+          <BookList documents={data.allBooks.documents} />
         </Box>
       </VStack>
     </Container>

@@ -30,6 +30,7 @@ export interface CreatorFormValue {
 
 export interface BookFormValues {
   title: string
+  subtitle: string
   blurb: string
   isbn: string
   language: string
@@ -81,6 +82,10 @@ export default function BookForm({ onSubmit }: BookFormProps) {
               <FormControl>
                 <FormLabel>Title</FormLabel>
                 <Input {...register("title")} />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Subtitle</FormLabel>
+                <Input {...register("subtitle")} />
               </FormControl>
               <FormControl>
                 <FormLabel>Creator(s)</FormLabel>

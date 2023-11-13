@@ -5,6 +5,7 @@ export type BookCreator = {
 
 export type Book = {
   title: string
+  subtitle: string
   blurb: string
   isbn: string
   language: string

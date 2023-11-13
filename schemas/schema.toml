@@ -3,6 +3,7 @@ description = "A unique edition of a published work"
 
 [book.fields]
 title = { type = "str" }
+subtitle = { type = "str" }
 blurb = { type = "str" }
 isbn = { type = "str" }
 language = { type = "str" }

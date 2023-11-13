@@ -7,8 +7,10 @@ export default function NewBook() {
 
   const handleSubmit = async (values: BookFormValues) => {
     console.log("form submitted", values)
-    const { title, blurb, isbn, language } = values
-    const book = { title, blurb, isbn, language }
+
+    // TODO: Find a way to pass these values without having to de-structure and re-structure
+    const { title, subtitle, blurb, isbn, language } = values
+    const book = { title, subtitle, blurb, isbn, language }
 
     if (session) {
       const viewId = await createBook(session, book)
