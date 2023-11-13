@@ -1,3 +1,4 @@
-import { PandaProvider } from "./contexts/PandaContext"
+import { PandaProvider } from "./contexts"
+import { usePanda } from "./hooks"
 
-export { PandaProvider }
+export { PandaProvider, usePanda }

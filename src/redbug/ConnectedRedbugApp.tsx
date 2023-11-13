@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import { usePanda } from "../p2panda/hooks/usePanda"
+import { usePanda } from "../p2panda-apollo/hooks/usePanda"
 
 interface ConnectedRedBugAppProps {
   children: ReactNode
