@@ -1,5 +1,5 @@
 import { DocumentViewId, Session } from "shirokuma"
-import { BOOK_SCHEMA_ID, BOOK_CREATOR_SCHEMA_ID } from "./schemas"
+import { SCHEMA_IDS } from "./schemas"
 import { Book, BookCreator } from "./document_types"
 
 type SingularDocumentViewId = string
@@ -28,7 +28,7 @@ export async function createBookCreator(
   bookCreator: BookCreator
 ): Promise<SingularDocumentViewId> {
   return expectSingleId(
-    await session.create(bookCreator, { schemaId: BOOK_CREATOR_SCHEMA_ID })
+    await session.create(bookCreator, { schemaId: SCHEMA_IDS.book_creator })
   )
 }
 
@@ -40,6 +40,6 @@ export async function createBook(
   // fields.insert("event", "relation", reaction.event)
 
   return expectSingleId(
-    await session.create(book, { schemaId: BOOK_SCHEMA_ID })
+    await session.create(book, { schemaId: SCHEMA_IDS.book })
   )
 }

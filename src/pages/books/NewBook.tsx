@@ -19,7 +19,7 @@ export default function NewBook() {
     if (session) {
       const viewId = await createBook(session, book)
       console.log("viewId", viewId)
-      await client.refetchQueries({ include: ["booksIndex"] })
+      await client.refetchQueries({ include: ["bookIndex"] })
       navigate("/books")
     } else {
       console.error("no P2Panda session, data not saved")

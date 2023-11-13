@@ -11,12 +11,12 @@ import {
   Stack,
 } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
-import { BOOK_SCHEMA_ID } from "../../data/schemas"
+import { SCHEMA_IDS } from "../../data/schemas"
 import BookList from "./components/BookList"
 
-const GET_BOOKS = gql`
-  query booksIndex {
-    allBooks: all_${BOOK_SCHEMA_ID} {
+const BOOK_INDEX_QUERY = gql`
+  query bookIndex {
+    allBooks: all_${SCHEMA_IDS.book} {
       documents {
         meta {
           viewId
@@ -34,7 +34,7 @@ const GET_BOOKS = gql`
 `
 
 export default function Books() {
-  const { loading, error, data } = useQuery(GET_BOOKS)
+  const { loading, error, data } = useQuery(BOOK_INDEX_QUERY)
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error : {error.message}</p>

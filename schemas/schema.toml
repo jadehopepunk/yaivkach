@@ -15,3 +15,12 @@ description = "An instance of someone contributing to a book's creation"
 [book_creator.fields]
 name = { type = "str" }
 role = { type = "str" }
+
+[library]
+description = "A collection of books"
+
+[library.fields]
+name = { type = "str" }
+slug = { type = "str"}
+short_description = { type = "str"}
+long_description = { type = "str"}
