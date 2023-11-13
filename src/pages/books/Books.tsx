@@ -8,6 +8,7 @@ import {
   SimpleGrid,
   CardBody,
   Card,
+  Stack,
 } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 import { BOOK_SCHEMA_ID } from "../../data/schemas"
@@ -42,7 +43,7 @@ export default function Books() {
 
   return (
     <Container padding={4}>
-      <VStack spacing={4}>
+      <Stack spacing={4}>
         <Heading>Books</Heading>
         <Link to="/book-items/new">
           <Button colorScheme="blue">Add Book</Button>
@@ -50,7 +51,7 @@ export default function Books() {
         <Box>
           <BookList documents={data.allBooks.documents} />
         </Box>
-      </VStack>
+      </Stack>
     </Container>
   )
 }
