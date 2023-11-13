@@ -22,6 +22,7 @@ const GET_BOOKS = gql`
         }
         fields {
           title
+          subtitle
           blurb
           isbn
           language
