@@ -2,9 +2,11 @@ import { useNavigate } from "react-router-dom"
 import { createBook } from "../../data/requests"
 import { usePanda } from "../../p2panda-apollo"
 import BookForm, { BookFormValues } from "./components/BookForm"
+import { useApolloClient } from "@apollo/client"
 
 export default function NewBook() {
   const { session } = usePanda()
+  const client = useApolloClient()
   let navigate = useNavigate()
 
   const handleSubmit = async (values: BookFormValues) => {
@@ -17,6 +19,7 @@ export default function NewBook() {
     if (session) {
       const viewId = await createBook(session, book)
       console.log("viewId", viewId)
+      await client.refetchQueries({ include: ["booksIndex"] })
       navigate("/books")
     } else {
       console.error("no P2Panda session, data not saved")

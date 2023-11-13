@@ -14,7 +14,7 @@ import { BOOK_SCHEMA_ID } from "../../data/schemas"
 import BookList from "./components/BookList"
 
 const GET_BOOKS = gql`
-  {
+  query booksIndex {
     allBooks: all_${BOOK_SCHEMA_ID} {
       documents {
         meta {
