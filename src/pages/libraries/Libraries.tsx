@@ -3,10 +3,13 @@ import { Stack, Heading, Box, Button } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 import { SCHEMA_IDS } from "../../data/schemas"
 import LibraryList from "./components/LibraryList"
+import { QueryStatusIndicator } from "../../components/QueryStatusIndicator"
+import { Library } from "../../data/document_types"
+import { DocList } from "../../p2panda-apollo/types"
 
 const LIBRARY_INDEX_QUERY = gql`
   query libraryIndex {
-    allLibraries: all_${SCHEMA_IDS.library} {
+    libraries: all_${SCHEMA_IDS.library} {
       documents {
         meta {
           documentId
@@ -21,22 +24,23 @@ const LIBRARY_INDEX_QUERY = gql`
 `
 
 export default function Libraries() {
-  const { loading, error, data } = useQuery(LIBRARY_INDEX_QUERY)
-
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error : {error.message}</p>
-
-  console.log(data, data)
+  const librariesQuery = useQuery<{ libraries: DocList<Library> }>(
+    LIBRARY_INDEX_QUERY
+  )
 
   return (
-    <Stack spacing={4}>
-      <Heading>Libraries</Heading>
-      <Link to="/libraries/new">
-        <Button colorScheme="blue">Create Library</Button>
-      </Link>
-      <Box>
-        <LibraryList documents={data.allLibraries.documents} />
-      </Box>
-    </Stack>
+    <QueryStatusIndicator query={librariesQuery}>
+      {({ libraries }) => (
+        <Stack spacing={4}>
+          <Heading>Libraries</Heading>
+          <Link to="/libraries/new">
+            <Button colorScheme="blue">Create Library</Button>
+          </Link>
+          <Box>
+            <LibraryList documents={libraries.documents} />
+          </Box>
+        </Stack>
+      )}
+    </QueryStatusIndicator>
   )
 }

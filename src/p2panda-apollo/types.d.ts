@@ -5,6 +5,10 @@ export type Doc<F> = {
   fields: F
 }
 
+export type DocList<F> = {
+  documents: Doc<F>[]
+}
+
 // export type Paginated<F> = {
 //   totalCount: number;
 //   hasNextPage: boolean;
