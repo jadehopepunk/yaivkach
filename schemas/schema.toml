@@ -23,3 +23,10 @@ description = "A collection of books"
 name = { type = "str" }
 short_description = { type = "str"}
 long_description = { type = "str"}
+
+[book_item]
+description = "A specific instance of a book in the world"
+
+[book_item.fields]
+library = { type = "relation", schema = { name = "library" } }
+book = { type = "relation", schema = { name = "book" } }
