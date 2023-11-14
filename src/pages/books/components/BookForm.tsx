@@ -72,7 +72,7 @@ export default function BookForm({ onSubmit }: BookFormProps) {
   })
 
   return (
-    <Container py={4}>
+    <Box>
       <Heading as="h2" size="lg" color="gray.600">
         New book
       </Heading>
@@ -151,6 +151,6 @@ export default function BookForm({ onSubmit }: BookFormProps) {
           </form>
         </FormProvider>
       </Box>
-    </Container>
+    </Box>
   )
 }

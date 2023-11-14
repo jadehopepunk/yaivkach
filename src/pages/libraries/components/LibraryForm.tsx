@@ -28,7 +28,7 @@ export default function LibraryForm({ onSubmit }: LibraryFormProps) {
   } = methods
 
   return (
-    <Container py={4}>
+    <Box>
       <Heading as="h2" size="lg" color="gray.600">
         New library
       </Heading>
@@ -61,6 +61,6 @@ export default function LibraryForm({ onSubmit }: LibraryFormProps) {
           </form>
         </FormProvider>
       </Box>
-    </Container>
+    </Box>
   )
 }

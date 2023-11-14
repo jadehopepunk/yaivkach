@@ -9,7 +9,7 @@ const BOOK_INDEX_QUERY = gql`
     allBooks: all_${SCHEMA_IDS.book} {
       documents {
         meta {
-          viewId
+          documentId
         }
         fields {
           title
@@ -32,16 +32,14 @@ export default function Books() {
   console.log(data, data)
 
   return (
-    <Container padding={4}>
-      <Stack spacing={4}>
-        <Heading>Books</Heading>
-        <Link to="/book-items/new">
-          <Button colorScheme="blue">Add Book</Button>
-        </Link>
-        <Box>
-          <BookList documents={data.allBooks.documents} />
-        </Box>
-      </Stack>
-    </Container>
+    <Stack spacing={4}>
+      <Heading>Books</Heading>
+      <Link to="/books/new">
+        <Button colorScheme="blue">Add Book</Button>
+      </Link>
+      <Box>
+        <BookList documents={data.allBooks.documents} />
+      </Box>
+    </Stack>
   )
 }
