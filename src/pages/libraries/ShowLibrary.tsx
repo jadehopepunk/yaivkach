@@ -1,25 +1,10 @@
-import { Box, Heading } from "@chakra-ui/react"
-import { SCHEMA_IDS } from "../../data/schemas"
+import { Box, Button, Heading, Stack } from "@chakra-ui/react"
 import { useQuery, gql } from "@apollo/client"
 import { Library } from "../../data/document_types"
 import { Doc } from "../../p2panda-apollo"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { QueryStatusIndicator } from "../../components/QueryStatusIndicator"
-
-const LIBRARY_SHOW_QUERY = gql`
-  query libraryShow($documentId: String!) {
-    library: ${SCHEMA_IDS.library}(id: $documentId) {
-      meta {
-        documentId
-      }
-      fields {
-        name
-        short_description
-        long_description
-      }
-    }
-  }
-`
+import { LIBRARY_SHOW_QUERY } from "../../data/queries"
 
 export default function ShowLibrary() {
   let { libraryId } = useParams()
@@ -36,6 +21,11 @@ export default function ShowLibrary() {
         {({ library }) => (
           <>
             <Heading as="h1">{library.fields.name}</Heading>
+            <Stack direction="row">
+              <Link to={`/libraries/${library.meta.documentId}/edit`}>
+                <Button>Edit</Button>
+              </Link>
+            </Stack>
             <Box>{library.fields.long_description}</Box>
           </>
         )}
