@@ -6,12 +6,14 @@ import LibraryForm from "./components/LibraryForm"
 import { Library } from "../../data/document_types"
 import { Box, Heading } from "@chakra-ui/react"
 
-export default function NewLibrary() {
+export default function EditLibrary() {
   const { session } = usePanda()
   const client = useApolloClient()
   let navigate = useNavigate()
 
   const handleSubmit = async (values: Library) => {
+    throw new Error("Not implemented")
+
     console.log("form submitted", values)
 
     // TODO: Find a way to pass these values without having to de-structure and re-structure
@@ -33,7 +35,7 @@ export default function NewLibrary() {
   return (
     <Box>
       <Heading as="h2" size="lg" color="gray.600">
-        New library
+        Edit library
       </Heading>
       <Box py={4}>
         <LibraryForm onSubmit={handleSubmit} />

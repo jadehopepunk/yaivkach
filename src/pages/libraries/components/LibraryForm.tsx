@@ -28,39 +28,28 @@ export default function LibraryForm({ onSubmit }: LibraryFormProps) {
   } = methods
 
   return (
-    <Box>
-      <Heading as="h2" size="lg" color="gray.600">
-        New library
-      </Heading>
-      <Box py={4}>
-        <FormProvider {...methods}>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Stack spacing={4} align="stretch">
-              <FormControl>
-                <FormLabel>Name</FormLabel>
-                <Input {...register("name")} />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Short description</FormLabel>
-                <Input {...register("short_description")} />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Long description</FormLabel>
-                <Textarea {...register("long_description")} />
-              </FormControl>
-              <Box>
-                <Button
-                  colorScheme="teal"
-                  isLoading={isSubmitting}
-                  type="submit"
-                >
-                  Create
-                </Button>
-              </Box>
-            </Stack>
-          </form>
-        </FormProvider>
-      </Box>
-    </Box>
+    <FormProvider {...methods}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Stack spacing={4} align="stretch">
+          <FormControl>
+            <FormLabel>Name</FormLabel>
+            <Input {...register("name")} />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Short description</FormLabel>
+            <Input {...register("short_description")} />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Long description</FormLabel>
+            <Textarea {...register("long_description")} />
+          </FormControl>
+          <Box>
+            <Button colorScheme="teal" isLoading={isSubmitting} type="submit">
+              Create
+            </Button>
+          </Box>
+        </Stack>
+      </form>
+    </FormProvider>
   )
 }
