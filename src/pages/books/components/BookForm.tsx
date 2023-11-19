@@ -9,7 +9,6 @@ import {
   FormControl,
   Input,
   Button,
-  Container,
   Heading,
   Box,
   VStack,
@@ -19,10 +18,13 @@ import {
   InputGroup,
   InputRightAddon,
   Stack,
+  FormErrorMessage,
 } from "@chakra-ui/react"
 import { AddIcon } from "@chakra-ui/icons"
 import capitalize from "capitalize"
 import langs from "langs"
+import { object, string } from "yup"
+import { yupResolver } from "@hookform/resolvers/yup"
 
 export interface CreatorFormValue {
   name: string
@@ -31,10 +33,10 @@ export interface CreatorFormValue {
 
 export interface BookFormValues {
   title: string
-  subtitle: string
-  blurb: string
-  isbn: string
-  language: string
+  subtitle?: string
+  blurb?: string
+  isbn?: string
+  language?: string
   creators?: Array<CreatorFormValue>
 }
 
@@ -54,10 +56,15 @@ export interface BookFormProps {
 }
 
 export default function BookForm({ onSubmit }: BookFormProps) {
+  const validationSchema = object().shape({
+    title: string().required("Title is required"),
+  })
+
   const methods = useForm<BookFormFieldValues>({
     defaultValues: {
       creators: [{ name: "", role: "author" }],
     },
+    resolver: yupResolver(validationSchema),
   })
   const {
     handleSubmit,
@@ -80,13 +87,15 @@ export default function BookForm({ onSubmit }: BookFormProps) {
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={4} align="stretch">
-              <FormControl>
+              <FormControl isInvalid={!!errors.title}>
                 <FormLabel>Title</FormLabel>
                 <Input {...register("title")} />
+                <FormErrorMessage>{errors.title?.message}</FormErrorMessage>
               </FormControl>
-              <FormControl>
+              <FormControl isInvalid={!!errors.subtitle}>
                 <FormLabel>Subtitle</FormLabel>
                 <Input {...register("subtitle")} />
+                <FormErrorMessage>{errors.subtitle?.message}</FormErrorMessage>
               </FormControl>
               <FormControl>
                 <FormLabel>Creator(s)</FormLabel>
@@ -117,18 +126,20 @@ export default function BookForm({ onSubmit }: BookFormProps) {
                   </VStack>
                 </Box>
               </FormControl>
-              <FormControl>
+              <FormControl isInvalid={!!errors.blurb}>
                 <FormLabel>Blurb</FormLabel>
                 <Textarea
                   {...register("blurb")}
                   placeholder="Promotional/descriptive text, perhaps from the back cover."
                 />
+                <FormErrorMessage>{errors.blurb?.message}</FormErrorMessage>
               </FormControl>
-              <FormControl>
+              <FormControl isInvalid={!!errors.isbn}>
                 <FormLabel>ISBN</FormLabel>
                 <Input {...register("isbn")} />
+                <FormErrorMessage>{errors.isbn?.message}</FormErrorMessage>
               </FormControl>
-              <FormControl>
+              <FormControl isInvalid={!!errors.language}>
                 <FormLabel>Language</FormLabel>
                 <Select {...register("language")} placeholder="Select option">
                   {langs.all().map((lang) => (
@@ -137,6 +148,7 @@ export default function BookForm({ onSubmit }: BookFormProps) {
                     </option>
                   ))}
                 </Select>
+                <FormErrorMessage>{errors.language?.message}</FormErrorMessage>
               </FormControl>
               <Box>
                 <Button
