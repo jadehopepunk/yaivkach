@@ -19,8 +19,7 @@ export default function NewLibrary() {
     const library = { name, short_description, long_description }
 
     if (session) {
-      const viewId = await createLibrary(session, library)
-      console.log("viewId", viewId)
+      await createLibrary(session, library)
       await client.refetchQueries({ include: ["libraryIndex"] })
       navigate("/libraries")
     } else {

@@ -6,6 +6,7 @@ export const LIBRARY_SHOW_QUERY = gql`
     library: ${SCHEMA_IDS.library}(id: $documentId) {
       meta {
         documentId
+        viewId
       }
       fields {
         name
@@ -22,6 +23,7 @@ export const LIBRARY_INDEX_QUERY = gql`
       documents {
         meta {
           documentId
+          viewId
         }
         fields {
           name
@@ -38,6 +40,7 @@ export const BOOK_INDEX_QUERY = gql`
       documents {
         meta {
           documentId
+          viewId
         }
         fields {
           title

@@ -52,3 +52,13 @@ export async function createLibrary(
     await session.create(library, { schemaId: SCHEMA_IDS.library })
   )
 }
+
+export async function updateLibrary(
+  session: Session,
+  library: Partial<Library>,
+  viewId: DocumentViewId
+): Promise<SingularDocumentViewId> {
+  return expectSingleId(
+    await session.update(library, viewId, { schemaId: SCHEMA_IDS.library })
+  )
+}
