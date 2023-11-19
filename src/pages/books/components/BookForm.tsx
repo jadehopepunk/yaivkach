@@ -18,13 +18,13 @@ import {
   InputGroup,
   InputRightAddon,
   Stack,
-  FormErrorMessage,
 } from "@chakra-ui/react"
 import { AddIcon } from "@chakra-ui/icons"
 import capitalize from "capitalize"
 import langs from "langs"
 import { object, string } from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
+import { ValidatedFormControl } from "../../../components/forms/errors"
 
 export interface CreatorFormValue {
   name: string
@@ -87,16 +87,14 @@ export default function BookForm({ onSubmit }: BookFormProps) {
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={4} align="stretch">
-              <FormControl isInvalid={!!errors.title}>
+              <ValidatedFormControl fieldError={errors.title}>
                 <FormLabel>Title</FormLabel>
                 <Input {...register("title")} />
-                <FormErrorMessage>{errors.title?.message}</FormErrorMessage>
-              </FormControl>
-              <FormControl isInvalid={!!errors.subtitle}>
+              </ValidatedFormControl>
+              <ValidatedFormControl fieldError={errors.subtitle}>
                 <FormLabel>Subtitle</FormLabel>
                 <Input {...register("subtitle")} />
-                <FormErrorMessage>{errors.subtitle?.message}</FormErrorMessage>
-              </FormControl>
+              </ValidatedFormControl>
               <FormControl>
                 <FormLabel>Creator(s)</FormLabel>
                 <Box>
@@ -126,20 +124,18 @@ export default function BookForm({ onSubmit }: BookFormProps) {
                   </VStack>
                 </Box>
               </FormControl>
-              <FormControl isInvalid={!!errors.blurb}>
+              <ValidatedFormControl fieldError={errors.blurb}>
                 <FormLabel>Blurb</FormLabel>
                 <Textarea
                   {...register("blurb")}
                   placeholder="Promotional/descriptive text, perhaps from the back cover."
                 />
-                <FormErrorMessage>{errors.blurb?.message}</FormErrorMessage>
-              </FormControl>
-              <FormControl isInvalid={!!errors.isbn}>
+              </ValidatedFormControl>
+              <ValidatedFormControl fieldError={errors.isbn}>
                 <FormLabel>ISBN</FormLabel>
                 <Input {...register("isbn")} />
-                <FormErrorMessage>{errors.isbn?.message}</FormErrorMessage>
-              </FormControl>
-              <FormControl isInvalid={!!errors.language}>
+              </ValidatedFormControl>
+              <ValidatedFormControl fieldError={errors.language}>
                 <FormLabel>Language</FormLabel>
                 <Select {...register("language")} placeholder="Select option">
                   {langs.all().map((lang) => (
@@ -148,8 +144,7 @@ export default function BookForm({ onSubmit }: BookFormProps) {
                     </option>
                   ))}
                 </Select>
-                <FormErrorMessage>{errors.language?.message}</FormErrorMessage>
-              </FormControl>
+              </ValidatedFormControl>
               <Box>
                 <Button
                   colorScheme="teal"
