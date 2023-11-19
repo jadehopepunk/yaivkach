@@ -1,7 +1,5 @@
 import { FormProvider, useForm, FieldValues } from "react-hook-form"
 import {
-  Container,
-  Heading,
   Box,
   Stack,
   FormControl,
@@ -11,15 +9,22 @@ import {
   Button,
 } from "@chakra-ui/react"
 import { Library } from "../../../data/document_types"
+import { Doc } from "../../../p2panda-apollo"
 
 type LibraryFormFieldValues = FieldValues & Library
 
 export interface LibraryFormProps {
   onSubmit: (values: Library) => void
+  initialLibrary?: Doc<Library>
 }
 
-export default function LibraryForm({ onSubmit }: LibraryFormProps) {
-  const methods = useForm<LibraryFormFieldValues>({})
+export default function LibraryForm({
+  onSubmit,
+  initialLibrary,
+}: LibraryFormProps) {
+  const methods = useForm<LibraryFormFieldValues>({
+    values: initialLibrary?.fields,
+  })
   const {
     handleSubmit,
     formState: { errors, isSubmitting },

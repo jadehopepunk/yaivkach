@@ -1,5 +1,5 @@
 import { Box, Button, Heading, Stack } from "@chakra-ui/react"
-import { useQuery, gql } from "@apollo/client"
+import { useQuery } from "@apollo/client"
 import { Library } from "../../data/document_types"
 import { Doc } from "../../p2panda-apollo"
 import { Link, useParams } from "react-router-dom"
