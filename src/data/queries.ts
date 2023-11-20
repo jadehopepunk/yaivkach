@@ -56,7 +56,7 @@ export const BOOK_INDEX_QUERY = gql`
 
 export const BOOK_SEARCH_QUERY = gql`
   query bookSearch($query: String!) {
-    books: all_book_00201a70519f4d8a940e0f617ee00de5058f76ebc5cf9307b3925df19dc491c830c5(
+    books: all_${SCHEMA_IDS.book}(
       filter: { title: { contains: $query } }
     ) {
       documents {
@@ -70,6 +70,29 @@ export const BOOK_SEARCH_QUERY = gql`
           blurb
           isbn
           language
+        }
+      }
+    }
+  }
+`
+
+export const LIBRARY_BOOK_ITEMS_QUERY = gql`
+  query libraryBookItems($libraryId: String!) {
+    book_items: all_${SCHEMA_IDS.book_item}(
+      filter: { library: { eq: $libraryId } }
+    ) {
+      documents {
+        meta {
+          documentId
+          viewId
+        }
+        fields {
+          book {
+            fields {
+              title
+              subtitle
+            }
+          }
         }
       }
     }
