@@ -1,7 +1,7 @@
 import { Box, Stack } from "@chakra-ui/react"
 import { useState } from "react"
-import BookSearch from "./components/BookSearch"
-import BookSearchResults from "./components/BookSearchResults"
+import BookSearch from "../books/components/BookSearch"
+import BookSearchResults from "../books/components/BookSearchResults"
 
 export default function NewBookItem() {
   const [query, setQuery] = useState("")
@@ -9,9 +9,7 @@ export default function NewBookItem() {
   return (
     <Stack>
       <BookSearch onSubmit={setQuery} />
-      <Box mt={4}>
-        <BookSearchResults query={query} />
-      </Box>
+      <Box mt={4}>{query && <BookSearchResults query={query} />}</Box>
     </Stack>
   )
 }

@@ -53,3 +53,23 @@ export const BOOK_INDEX_QUERY = gql`
     }
   }
 `
+
+export const BOOK_SEARCH_QUERY = gql`
+  query bookIndex {
+    books: all_${SCHEMA_IDS.book} {
+      documents {
+        meta {
+          documentId
+          viewId
+        }
+        fields {
+          title
+          subtitle
+          blurb
+          isbn
+          language
+        }
+      }
+    }
+  }
+`
