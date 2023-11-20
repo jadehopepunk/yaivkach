@@ -58,7 +58,7 @@ export default function LibraryForm({
           </ValidatedFormControl>
           <Box>
             <Button colorScheme="teal" isLoading={isSubmitting} type="submit">
-              Create
+              {initialLibrary ? "Update" : "Create"}
             </Button>
           </Box>
         </Stack>

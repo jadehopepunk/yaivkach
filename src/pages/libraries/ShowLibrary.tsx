@@ -26,7 +26,7 @@ export default function ShowLibrary() {
                 <Button>Edit</Button>
               </Link>
             </Stack>
-            <Box>{library.fields.long_description}</Box>
+            <Box mt={4}>{library.fields.long_description}</Box>
           </>
         )}
       </QueryStatusIndicator>
