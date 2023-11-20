@@ -25,6 +25,9 @@ export default function ShowLibrary() {
               <Link to={`/libraries/${library.meta.documentId}/edit`}>
                 <Button>Edit</Button>
               </Link>
+              <Link to={`/libraries/${library.meta.documentId}/book-items/new`}>
+                <Button>Add book</Button>
+              </Link>
             </Stack>
             <Box mt={4}>{library.fields.long_description}</Box>
           </>

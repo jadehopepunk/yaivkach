@@ -7,6 +7,7 @@ import Libraries from "./pages/libraries/Libraries.tsx"
 import NewLibrary from "./pages/libraries/NewLibrary.tsx"
 import ShowLibrary from "./pages/libraries/ShowLibrary.tsx"
 import EditLibrary from "./pages/libraries/EditLibrary.tsx"
+import NewLibraryBookItem from "./pages/book-items/NewLibraryBookItem.tsx"
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,10 @@ const router = createBrowserRouter([
         element: <ShowLibrary />,
       },
       { path: "/libraries/:libraryId/edit", element: <EditLibrary /> },
-
+      {
+        path: "/libraries/:libraryId/book-items/new",
+        element: <NewLibraryBookItem />,
+      },
       { path: "/books", element: <Books /> },
       { path: "/books/new", element: <NewBook /> },
     ],
