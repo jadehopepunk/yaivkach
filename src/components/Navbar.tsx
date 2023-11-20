@@ -10,7 +10,7 @@ export default function Navbar() {
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex alignItems={"center"} justifyContent={"space-between"}>
           <Stack direction="row" alignItems="center">
-            <Box>Panga Libraries</Box>
+            <Box>Book Sharing</Box>
             <Box>
               <Link to="/books">
                 <Button colorScheme="blue" variant="ghost">

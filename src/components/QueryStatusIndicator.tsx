@@ -1,4 +1,5 @@
 import { QueryResult } from "@apollo/client/react/types/types"
+import { Center, Spinner } from "@chakra-ui/react"
 import { ReactNode } from "react"
 
 interface Props<TData> {
@@ -8,7 +9,11 @@ interface Props<TData> {
 
 export function QueryStatusIndicator<TData>({ query, children }: Props<TData>) {
   if (query.loading) {
-    return <p>Loading...</p>
+    return (
+      <Center>
+        <Spinner size="lg" opacity="50%" />
+      </Center>
+    )
   }
 
   if (query.error) {
