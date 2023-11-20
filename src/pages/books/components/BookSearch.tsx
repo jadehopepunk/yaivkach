@@ -46,7 +46,10 @@ export default function BookSearch({ onSubmit }: BookSearchProps) {
           <InputLeftElement pointerEvents="none">
             <SearchIcon color="gray.300" />
           </InputLeftElement>
-          <Input placeholder="isbn, title or author" {...register("query")} />
+          <Input
+            placeholder="currently only by title, case sensitive"
+            {...register("query")}
+          />
         </InputGroup>
       </ValidatedFormControl>
       <Box mt={4}>

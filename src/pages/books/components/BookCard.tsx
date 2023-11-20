@@ -1,13 +1,14 @@
-import { Card, CardBody, Heading, Stack, Text } from "@chakra-ui/react"
+import { Card, CardBody, CardFooter, Heading, Stack } from "@chakra-ui/react"
 import { Book } from "../../../data/document_types"
 
 interface BookCardProps {
   book: Book
+  children?: React.ReactNode
 }
 
-export default function BookCard({ book }: BookCardProps) {
+export default function BookCard({ book, children }: BookCardProps) {
   return (
-    <Card>
+    <Card direction="row">
       <CardBody>
         <Stack spacing="0">
           <Heading size="md">{book.title}</Heading>
@@ -16,6 +17,7 @@ export default function BookCard({ book }: BookCardProps) {
           </Heading>
         </Stack>
       </CardBody>
+      {children && <CardFooter>{children}</CardFooter>}
     </Card>
   )
 }

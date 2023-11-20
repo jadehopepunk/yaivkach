@@ -1,8 +1,12 @@
-import { DocumentViewId, Session } from "shirokuma"
+import { DocumentViewId, OperationFields, Session } from "shirokuma"
 import { SCHEMA_IDS } from "./schemas"
-import { Book, BookCreator, Library } from "./document_types"
-
-type SingularDocumentViewId = string
+import {
+  SingularDocumentViewId,
+  Book,
+  BookCreator,
+  Library,
+  BookItem,
+} from "./document_types"
 
 // TODO: This shouldn't be needed. I've filed a PR with Shirokuma to try
 //       and remove it: https://github.com/p2panda/shirokuma/pull/29
@@ -60,5 +64,18 @@ export async function updateLibrary(
 ): Promise<SingularDocumentViewId> {
   return expectSingleId(
     await session.update(library, viewId, { schemaId: SCHEMA_IDS.library })
+  )
+}
+
+export async function createBookItem(
+  session: Session,
+  bookItem: BookItem
+): Promise<SingularDocumentViewId> {
+  const fields = new OperationFields()
+  fields.insert("book", "relation", bookItem.bookId)
+  fields.insert("library", "relation", bookItem.libraryId)
+
+  return expectSingleId(
+    await session.create(fields, { schemaId: SCHEMA_IDS.book_item })
   )
 }
