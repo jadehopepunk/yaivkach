@@ -1,17 +1,16 @@
 import { Box, Stack } from "@chakra-ui/react"
+import { useState } from "react"
 import BookSearch from "./components/BookSearch"
 import BookSearchResults from "./components/BookSearchResults"
 
 export default function NewBookItem() {
-  function onSubmit(query: string) {
-    console.log("form submitted", query)
-  }
+  const [query, setQuery] = useState("")
 
   return (
     <Stack>
-      <BookSearch onSubmit={onSubmit} />
+      <BookSearch onSubmit={setQuery} />
       <Box mt={4}>
-        <BookSearchResults />
+        <BookSearchResults query={query} />
       </Box>
     </Stack>
   )

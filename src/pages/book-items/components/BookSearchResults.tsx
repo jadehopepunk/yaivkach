@@ -1,3 +1,7 @@
-export default function BookSearchResults() {
-  return <p>book search results</p>
+interface BookSearchResultsProps {
+  query?: string
+}
+
+export default function BookSearchResults({ query }: BookSearchResultsProps) {
+  return <p>book search results: {query}</p>
 }
