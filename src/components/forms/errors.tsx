@@ -13,7 +13,7 @@ export function TextFieldError({
 
 interface ValidatedFormControlProps {
   children: React.ReactNode
-  fieldError?: FieldError
+  fieldError?: FieldError | Merge<FieldError, FieldErrorsImpl> | undefined
 }
 
 export function ValidatedFormControl({
@@ -23,7 +23,9 @@ export function ValidatedFormControl({
   return (
     <FormControl isInvalid={!!fieldError}>
       {children}
-      <FormErrorMessage>{fieldError?.message}</FormErrorMessage>
+      {fieldError?.message && typeof fieldError.message === "string" && (
+        <FormErrorMessage>{fieldError.message}</FormErrorMessage>
+      )}
     </FormControl>
   )
 }
