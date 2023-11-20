@@ -55,8 +55,10 @@ export const BOOK_INDEX_QUERY = gql`
 `
 
 export const BOOK_SEARCH_QUERY = gql`
-  query bookIndex {
-    books: all_${SCHEMA_IDS.book} {
+  query bookSearch($query: String!) {
+    books: all_book_00201a70519f4d8a940e0f617ee00de5058f76ebc5cf9307b3925df19dc491c830c5(
+      filter: { title: { contains: $query } }
+    ) {
       documents {
         meta {
           documentId
