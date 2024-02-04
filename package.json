@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "release": "release-it"
+    "release": "release-it",
+    "build": "tsc && vite build"
   },
   "dependencies": {
     "@apollo/client": "^3.8.7",
