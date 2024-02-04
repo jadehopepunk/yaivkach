@@ -7,4 +7,4 @@ RUN npm install && npm run build
 # RUNNER
 FROM alpine as runner
 COPY --from=vitebuilder /app/dist /app/version/www
-CMD ["cp -rf /app/version/www /app/www && echo 'done' && tail -f /dev/null"]
+CMD ["cp -rf /app/version/www/* /app/www/"]
