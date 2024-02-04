@@ -5,7 +5,6 @@ ADD . .
 RUN npm install && npm run build
 
 # RUNNER
-FROM nginx as runner
-COPY ./deployment/nginx.default.conf /etc/nginx/conf.d/default.conf
-COPY --from=vitebuilder /app/dist /app/www
-EXPOSE 80
+FROM alpine as runner
+COPY --from=vitebuilder /app/dist /app/version/www
+CMD ["cp -rf /app/version/www /app/www && echo 'done' && tail -f /dev/null"]
