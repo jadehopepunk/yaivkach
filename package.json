@@ -8,7 +8,7 @@
     "push": "tsc && vite build && npm run dockerpush",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "dockerpush": "docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t redbugcollective/oxbike:latest --push .",
+    "dockerpush": "docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t redbugcollective/srib:latest --push .",
     "ci": "npm run build && npm run deploy && npm run remoterun",
     "release": "release-it"
   },

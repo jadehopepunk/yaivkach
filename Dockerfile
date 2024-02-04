@@ -1,4 +1,11 @@
-FROM nginx
+# FRONTEND BUILDER
+FROM --platform=$BUILDPLATFORM node:latest as vitebuilder
 WORKDIR /app
-COPY ./dist /app
-COPY ./deploy/nginx.conf /etc/nginx/conf.d/default.conf
+ADD . .
+RUN npm install && npm run build
+
+# RUNNER
+FROM nginx as runner
+COPY ./deployment/nginx.default.conf /etc/nginx/conf.d/default.conf
+COPY --from=vitebuilder /app/dist /app
+EXPOSE 80
