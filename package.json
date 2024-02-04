@@ -9,7 +9,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "dockerpush": "docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t redbugcollective/oxbike:latest --push .",
-    "ci": "npm run build && npm run deploy && npm run remoterun"
+    "ci": "npm run build && npm run deploy && npm run remoterun",
+    "release": "release-it"
   },
   "dependencies": {
     "@apollo/client": "^3.8.7",
