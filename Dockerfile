@@ -7,5 +7,5 @@ RUN npm install && npm run build
 # RUNNER
 FROM nginx as runner
 COPY ./deployment/nginx.default.conf /etc/nginx/conf.d/default.conf
-COPY --from=vitebuilder /app/dist /app
+COPY --from=vitebuilder /app/dist /app/www
 EXPOSE 80
