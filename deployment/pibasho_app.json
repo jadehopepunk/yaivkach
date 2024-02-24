@@ -1,0 +1,6 @@
+{
+  "name": "Scrib",
+  "path": "/books",
+  "version": "0.0.1",
+  "image": "redbugcollective/scrib"
+}

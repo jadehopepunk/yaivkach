@@ -5,5 +5,10 @@
   },
   "npm": {
     "publish": false
+  },
+  "plugins": {
+    "@release-it/bumper": {
+      "out": "pibasho_app.json"
+    }
   }
 }

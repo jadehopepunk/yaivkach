@@ -8,4 +8,6 @@ RUN npm install && npm run build
 FROM alpine as runner
 COPY --from=vitebuilder /app/dist /app/version/www
 COPY --from=vitebuilder /app/deployment/nginx.app.conf /app/version/nginx/
-CMD cp -rf /app/version/www/* /app/www/ && cp -rf /app/version/nginx/* /app/nginx/
+COPY --from=vitebuilder /app/deployment/pibasho_app.json /app/version/registration/
+CMD cp -rf /app/version/www/* /app/www/ && cp -rf /app/version/nginx/* /app/nginx/ && cp -rf /app/version/registration/* /app/registration/
+```
